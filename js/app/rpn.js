@@ -64,10 +64,8 @@ define(function () {
             opRegExps.push(operatorsConfig[op].regExp);
         }
         return string
-                .match(new RegExp("(\\d+(\\.\\d+)?)|\\(|\\)|" + opRegExps.join('|'), 'ig'))
-                .map(function (token) {
-                    return token.toLowerCase();
-                });
+                .toLowerCase()
+                .match(new RegExp("(\\d+(\\.\\d+)?)|\\(|\\)|" + opRegExps.join('|'), 'g'));
     }
 
     function getFromInfix(infixString) {
