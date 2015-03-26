@@ -3,6 +3,7 @@ define(function () {
 
 	var operatorsConfig = {
 		'+': {
+			regExp: '\\+',
 			precedence: 2,
 			assoc: 'left',
 			argsCount: 2,
@@ -11,6 +12,7 @@ define(function () {
 			}
 		},
 		'-': {
+			regExp: '\\-',
 			precedence: 2,
 			assoc: 'left',
 			argsCount: 2,
@@ -19,6 +21,7 @@ define(function () {
 			}
 		},
 		'*': {
+			regExp: '\\*',
 			precedence: 3,
 			assoc: 'left',
 			argsCount: 2,
@@ -27,6 +30,7 @@ define(function () {
 			}
 		},
 		'x': {
+			regExp: 'x',
 			precedence: 3,
 			assoc: 'left',
 			argsCount: 2,
@@ -35,6 +39,7 @@ define(function () {
 			}
 		},
 		'/': {
+			regExp: '\\/',
 			precedence: 3,
 			assoc: 'left',
 			argsCount: 2,
@@ -42,7 +47,8 @@ define(function () {
 				return a / b;
 			}
 		},
-		'^': {
+		'pow': {
+			regExp: 'pow',
 			precedence: 4,
 			assoc: 'right',
 			argsCount: 2,
@@ -53,7 +59,15 @@ define(function () {
 	};
 
 	function tokenize(string) {
-		return string.replace(/ +/g, ' ').trim().split(' ');
+		var opRegExps = [];
+		for (var op in operatorsConfig) {
+			opRegExps.push(operatorsConfig[op].regExp);
+		}
+		return string
+				.match(new RegExp("(\\d+(\\.\\d+)?)|\\(|\\)|" + opRegExps.join('|'), 'ig'))
+				.map(function (token) {
+					return token.toLowerCase();
+				});
 	}
 
 	function getFromInfix(infixString) {
