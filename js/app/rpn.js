@@ -2,27 +2,18 @@ define(function () {
     'use strict';
 
     var operatorsConfig = {
-        '+': {
-            regExp: '\\+',
-            precedence: 2,
-            assoc: 'left',
+        'pow': {
+            regExp: 'pow',
+            precedence: 50,
+            assoc: 'right',
             argsCount: 2,
             execFunc: function (a, b) {
-                return a + b;
-            }
-        },
-        '-': {
-            regExp: '\\-',
-            precedence: 2,
-            assoc: 'left',
-            argsCount: 2,
-            execFunc: function (a, b) {
-                return a - b;
+                return Math.pow(a, b);
             }
         },
         '*': {
             regExp: '\\*',
-            precedence: 3,
+            precedence: 40,
             assoc: 'left',
             argsCount: 2,
             execFunc: function (a, b) {
@@ -31,7 +22,7 @@ define(function () {
         },
         'x': {
             regExp: 'x',
-            precedence: 3,
+            precedence: 40,
             assoc: 'left',
             argsCount: 2,
             execFunc: function (a, b) {
@@ -40,20 +31,38 @@ define(function () {
         },
         '/': {
             regExp: '\\/',
-            precedence: 3,
+            precedence: 40,
             assoc: 'left',
             argsCount: 2,
             execFunc: function (a, b) {
                 return a / b;
             }
         },
-        'pow': {
-            regExp: 'pow',
-            precedence: 4,
-            assoc: 'right',
+        '%': {
+            regExp: '\\%',
+            precedence: 40,
+            assoc: 'left',
             argsCount: 2,
             execFunc: function (a, b) {
-                return Math.pow(a, b);
+                return a % b;
+            }
+        },
+        '+': {
+            regExp: '\\+',
+            precedence: 30,
+            assoc: 'left',
+            argsCount: 2,
+            execFunc: function (a, b) {
+                return a + b;
+            }
+        },
+        '-': {
+            regExp: '\\-',
+            precedence: 30,
+            assoc: 'left',
+            argsCount: 2,
+            execFunc: function (a, b) {
+                return a - b;
             }
         }
     };
