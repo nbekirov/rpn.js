@@ -78,7 +78,63 @@ define(function () {
     }
 
     function getFromInfix(infixString) {
-        return '';
+        //  Shunting-yard algorithm implementation
+        var output = [], stack = [];
+
+        tokenize(infixString).forEach(function (token) {
+            if (!isNaN(token)) {
+                output.push(parseFloat(token));
+            } else if (operatorsConfig.hasOwnProperty(token)) {
+                var o1 = operatorsConfig[token];
+
+                for (var i = stack.length - 1; i >= 0; i--) {
+                    if (!operatorsConfig.hasOwnProperty(stack[i])) {
+                        break;
+                    }
+
+                    var o2 = operatorsConfig[stack[i]];
+
+                    if (
+                            (o1.assoc === 'left' && o1.precedence <= o2.precedence)
+                            || (o1.assoc === 'right' && o1.precedence < o2.precedence)
+                            ) {
+                        output.push(stack.pop());
+                    }
+                }
+
+                stack.push(token);
+            } else if (token === '(') {
+                stack.push(token);
+            } else if (token === ')') {
+                var foundMatching = false;
+                for (var i = stack.length - 1; i >= 0; i--) {
+                    if (stack[i] !== '(') {
+                        output.push(stack.pop());
+                    } else {
+                        stack.pop();
+                        foundMatching = true;
+                        break;
+                    }
+                }
+
+                if (!foundMatching) {
+                    throw 'Mismatched parentheses';
+                }
+            } else {
+                throw 'Invalid token: ' + token;
+            }
+        });
+
+        for (var i = stack.length - 1; i >= 0; i--) {
+            var token = stack[i];
+            if (token === '(' || token === ')') {
+                throw 'Mismatched parentheses';
+            }
+
+            output.push(token);
+        }
+
+        return output.join(' ');
     }
 
     function solve(rpnString) {
