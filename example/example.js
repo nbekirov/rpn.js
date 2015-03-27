@@ -17,10 +17,10 @@ requirejs(['jquery', 'rpn/main'], function ($, rpn) {
         $('#rpn_input').val(result);
     });
 
-    $('#solve_rpn_button').bind('click', function () {
+    $('#evaluate_rpn_button').bind('click', function () {
         var result = '';
         try {
-            result = rpn.solve($('#rpn_input').val())
+            result = rpn.evaluate($('#rpn_input').val())
         } catch (err) {
             alert(err);
         }
