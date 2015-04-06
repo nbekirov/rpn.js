@@ -15,5 +15,8 @@
     "notation"
   ],
   "license": "MIT",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "requirejs": "~2.1.17"
+  }
 }
