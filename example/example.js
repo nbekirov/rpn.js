@@ -9,7 +9,7 @@ requirejs(['jquery', 'rpn/main'], function ($, rpn) {
     $('#transfrom_infix_button').bind('click', function () {
         var result = '';
         try {
-            result = rpn.getFromInfix($('#infix_input').val())
+            result = rpn.getFromInfix($('#infix_input').val());
         } catch (err) {
             alert(err);
         }
@@ -20,7 +20,7 @@ requirejs(['jquery', 'rpn/main'], function ($, rpn) {
     $('#evaluate_rpn_button').bind('click', function () {
         var result = '';
         try {
-            result = rpn.evaluate($('#rpn_input').val())
+            result = rpn.evaluate($('#rpn_input').val());
         } catch (err) {
             alert(err);
         }
