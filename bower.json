@@ -1,0 +1,19 @@
+{
+  "name": "rpn",
+  "version": "0.1.0",
+  "homepage": "https://github.com/nbekirov/rpn.js",
+  "authors": [
+    "Nikolay Bekirov <nbekirov@gmail.com>"
+  ],
+  "description": "Reverse Polish notation utils",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "reverse",
+    "polish",
+    "notation"
+  ],
+  "license": "MIT",
+  "private": true
+}
