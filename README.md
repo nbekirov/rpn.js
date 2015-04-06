@@ -1,2 +1,2 @@
 # rpn.js
-Reverse Polish notation experiments
+Reverse Polish notation utils
