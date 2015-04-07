@@ -5,26 +5,30 @@ requirejs.config({
     }
 });
 
-requirejs(['jquery', 'rpn/main'], function ($, rpn) {
-    $('#transfrom_infix_button').bind('click', function () {
+requirejs(['jquery', 'rpn/tokenizer', 'rpn/main'], function ($, tokenizer, rpn) {
+    'use strict';
+
+    function writeToConsole(text) {
+        var cElem = $('#console');
+        cElem.val((cElem.val() ? cElem.val() + '\n' : '') + text);
+        cElem.scrollTop(cElem[0].scrollHeight - cElem.height());
+    }
+
+    $('#transfrom_infix_button, #evaluate_rpn_button').bind('click', function () {
         var result = '';
+        var btnClickedElem = $(this);
+        var inputString = $(btnClickedElem.attr('data-source')).val();
+
+        writeToConsole('\nInput: ' + inputString);
+        writeToConsole('Tokenizer: ' + tokenizer(inputString));
+
         try {
-            result = rpn.getFromInfix($('#infix_input').val());
+            result = rpn[btnClickedElem.attr('data-method')](inputString);
         } catch (err) {
-            alert(err);
+            writeToConsole('Error: ' + err);
         }
 
-        $('#rpn_input').val(result);
-    });
-
-    $('#evaluate_rpn_button').bind('click', function () {
-        var result = '';
-        try {
-            result = rpn.evaluate($('#rpn_input').val());
-        } catch (err) {
-            alert(err);
-        }
-
-        $('#result_output').val(result);
+        writeToConsole('Result: ' + result);
+        $(btnClickedElem.attr('data-dest')).val(result);
     });
 });
