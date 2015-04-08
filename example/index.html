@@ -6,13 +6,15 @@
 	</head>
 	<body>
 		<div>
-			<input type="text" id="infix_input" style="width: 250px;" placeholder="Infix expression" />
+			<input type="text" id="infix_input" style="width: 400px;" placeholder="Infix expression" />
 			<input type="button" id="transfrom_infix_button" value="Transform to RPN" data-source="#infix_input" data-dest="#rpn_input" data-method="getFromInfix" />
-			<input type="text" id="rpn_input" style="width: 250px;" placeholder="RPN expression" />
+			<br />
+			<input type="text" id="rpn_input" style="width: 400px;" placeholder="RPN expression" />
 			<input type="button" id="evaluate_rpn_button" value="Evaluate RPN" data-source="#rpn_input" data-dest="#result_output" data-method="evaluate" />
-			<input type="text" id="result_output" />
+			<br />
+			<input type="text" id="result_output" style="width: 400px;" placeholder="Result" />
 			<div>
-				<textarea style="width: 800px; height: 100px;" id="console" placeholder="Console"></textarea>
+				<textarea style="width: 800px; height: 300px;" id="console" placeholder="Console"></textarea>
 			</div>
 		</div>
 	</body>
