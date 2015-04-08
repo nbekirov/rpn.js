@@ -5,7 +5,7 @@ requirejs.config({
     }
 });
 
-requirejs(['jquery', 'rpn/tokenizer', 'rpn/main'], function ($, tokenizer, rpn) {
+requirejs(['jquery', 'rpn/tokenizer', 'rpn/eval', 'rpn/from_infix'], function ($, tokenizer, rpn_eval, rpn_from_infix) {
     'use strict';
 
     function writeToConsole(text) {
@@ -23,7 +23,11 @@ requirejs(['jquery', 'rpn/tokenizer', 'rpn/main'], function ($, tokenizer, rpn) 
         writeToConsole('Tokenizer: ' + tokenizer(inputString));
 
         try {
-            result = rpn[btnClickedElem.attr('data-method')](inputString);
+            if (btnClickedElem.attr('data-method') === 'rpn_eval') {
+                result = rpn_eval(inputString);
+            } else if (btnClickedElem.attr('data-method') === 'rpn_from_infix') {
+                result = rpn_from_infix(inputString);
+            }
         } catch (err) {
             writeToConsole('Error: ' + err);
         }

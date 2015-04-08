@@ -27,8 +27,8 @@
     // Define all of your specs here. These are RequireJS modules.
     var specs = [
         '../tests/rpn/tokenizer_test.spec',
-        '../tests/rpn/infix_to_rpn_test.spec',
-        '../tests/rpn/rpn_eval_test.spec',
+        '../tests/rpn/from_infix_test.spec',
+        '../tests/rpn/eval_test.spec'
     ];
 
     // Load Jasmine - This will still create all of the normal Jasmine browser globals unless `boot.js` is re-written to use the

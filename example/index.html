@@ -7,10 +7,10 @@
 	<body>
 		<div>
 			<input type="text" id="infix_input" style="width: 400px;" placeholder="Infix expression" />
-			<input type="button" id="transfrom_infix_button" value="Transform to RPN" data-source="#infix_input" data-dest="#rpn_input" data-method="getFromInfix" />
+			<input type="button" id="transfrom_infix_button" value="Transform to RPN" data-source="#infix_input" data-dest="#rpn_input" data-method="rpn_from_infix" />
 			<br />
 			<input type="text" id="rpn_input" style="width: 400px;" placeholder="RPN expression" />
-			<input type="button" id="evaluate_rpn_button" value="Evaluate RPN" data-source="#rpn_input" data-dest="#result_output" data-method="evaluate" />
+			<input type="button" id="evaluate_rpn_button" value="Evaluate RPN" data-source="#rpn_input" data-dest="#result_output" data-method="rpn_eval" />
 			<br />
 			<input type="text" id="result_output" style="width: 400px;" placeholder="Result" />
 			<div>
