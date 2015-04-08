@@ -33,10 +33,11 @@ define(['rpn/tokenizer'], function (tokenizer) {
 
         it("should NOT detect negative", function () {
             expect(tokenizer('-3')).toEqual(['-', '3']);
+            expect(tokenizer('-3.5')).toEqual(['-', '3.5']);
         });
 
         it("should detect mix of numbers operators and  parentheses", function () {
-            expect(tokenizer('0.500000000+ -(-3/-2)')).toEqual(['0.500000000', '+', '-', '(', '-', '3', '/', '-', '2', ')']);
+            expect(tokenizer('0.500000000+ -(-3/-2) * -1')).toEqual(['0.500000000', '+', '-', '(', '-', '3', '/', '-', '2', ')', '*', '-', '1']);
         });
     });
 });
