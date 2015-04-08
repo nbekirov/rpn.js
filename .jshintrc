@@ -1,5 +1,5 @@
 {
   "undef": true,
   "unused": true,
-  "predef": ["alert", "window", "require", "requirejs", "define", "describe", "it", "expect"]
+  "predef": ["alert", "window", "require", "requirejs", "define", "describe", "it", "expect", "module"]
 }
