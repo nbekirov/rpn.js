@@ -34,7 +34,6 @@ define(['rpn/from_infix'], function (rpn_from_infix) {
             expect(rpn_from_infix('2 + 3')).toEqual('2 3 +');
             expect(rpn_from_infix('2 - 3')).toEqual('2 3 -');
             expect(rpn_from_infix('2 * 3')).toEqual('2 3 *');
-            expect(rpn_from_infix('2 x 3')).toEqual('2 3 x');
             expect(rpn_from_infix('2 % 3')).toEqual('2 3 %');
             expect(rpn_from_infix('2 pow 3')).toEqual('2 3 pow');
         });
@@ -44,10 +43,9 @@ define(['rpn/from_infix'], function (rpn_from_infix) {
         });
 
         it("should respect precedence/associativity of binary operators", function () {
-            expect(rpn_from_infix('0 + 1 - 2 + 3 * 4 x 5 / 6 % 7')).toEqual('0 1 + 2 - 3 4 * 5 x 6 / 7 % +');
+            expect(rpn_from_infix('0 + 1 - 2 + 3 * 4 / 6 % 7')).toEqual('0 1 + 2 - 3 4 * 6 / 7 % +');
             expect(rpn_from_infix('2 - 3 - 4')).toEqual('2 3 - 4 -');
             expect(rpn_from_infix('2 + 3 + 4')).toEqual('2 3 + 4 +');
-            expect(rpn_from_infix('2 x 3 x 4')).toEqual('2 3 x 4 x');
             expect(rpn_from_infix('2 / 3 / 4')).toEqual('2 3 / 4 /');
             expect(rpn_from_infix('2 % 3 % 4')).toEqual('2 3 % 4 %');
             expect(rpn_from_infix('1 / 2 pow 3 pow -4')).toEqual('1 2 3 4 _ pow pow /');

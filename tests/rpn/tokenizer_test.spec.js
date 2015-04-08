@@ -16,11 +16,11 @@ define(['rpn/tokenizer'], function (tokenizer) {
         });
 
         it("should detect operators", function () {
-            expect(tokenizer('+-*x/%pow_')).toEqual(['+', '-', '*', 'x', '/', '%', 'pow', '_']);
+            expect(tokenizer('+-*/%pow_')).toEqual(['+', '-', '*', '/', '%', 'pow', '_']);
         });
 
         it("should detect mixed-case operators and return lowercase", function () {
-            expect(tokenizer('X PoW POW pOw')).toEqual(['x', 'pow', 'pow', 'pow']);
+            expect(tokenizer('PoW POW pOw')).toEqual(['pow', 'pow', 'pow']);
         });
 
         it("should detect parentheses", function () {

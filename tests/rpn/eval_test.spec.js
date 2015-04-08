@@ -23,7 +23,6 @@ define(['rpn/eval'], function (rpn_eval) {
             expect(testThrow.bind(null, '2 +')).toThrowError(/Not enough operands in stack/);
             expect(testThrow.bind(null, '3 -')).toThrowError(/Not enough operands in stack/);
             expect(testThrow.bind(null, '3 *')).toThrowError(/Not enough operands in stack/);
-            expect(testThrow.bind(null, '3 x')).toThrowError(/Not enough operands in stack/);
             expect(testThrow.bind(null, '3 /')).toThrowError(/Not enough operands in stack/);
             expect(testThrow.bind(null, '3 %')).toThrowError(/Not enough operands in stack/);
             expect(testThrow.bind(null, '3 pow')).toThrowError(/Not enough operands in stack/);
@@ -45,7 +44,6 @@ define(['rpn/eval'], function (rpn_eval) {
             expect(testThrow.bind(null, '3 4 5 +')).toThrowError(/Invalid expression/);
             expect(testThrow.bind(null, '3 4 5 -')).toThrowError(/Invalid expression/);
             expect(testThrow.bind(null, '3 4 5 *')).toThrowError(/Invalid expression/);
-            expect(testThrow.bind(null, '3 4 5 x')).toThrowError(/Invalid expression/);
             expect(testThrow.bind(null, '3 4 5 /')).toThrowError(/Invalid expression/);
             expect(testThrow.bind(null, '3 4 5 %')).toThrowError(/Invalid expression/);
             expect(testThrow.bind(null, '3 4 5 pow')).toThrowError(/Invalid expression/);
@@ -56,7 +54,6 @@ define(['rpn/eval'], function (rpn_eval) {
             expect(rpn_eval('2 3 +')).toEqual(5);
             expect(rpn_eval('2 3 -')).toEqual(-1);
             expect(rpn_eval('2 3 *')).toEqual(6);
-            expect(rpn_eval('2 3 x')).toEqual(6);
             expect(rpn_eval('2 3 /')).toBeCloseTo(0.6666);
             expect(rpn_eval('2 3 %')).toEqual(2);
             expect(rpn_eval('2 3 pow')).toEqual(8);
