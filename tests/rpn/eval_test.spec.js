@@ -62,5 +62,9 @@ define(['rpn/eval'], function (rpn_eval) {
         it("should get the right answer for unary operators", function () {
             expect(rpn_eval('2 _')).toEqual(-2);
         });
+
+        it("should get the right answer for division by zero", function () {
+            expect(rpn_eval('1 0 /')).toEqual(Number.POSITIVE_INFINITY);
+        });
     });
 });
